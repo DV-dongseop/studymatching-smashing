@@ -1,20 +1,78 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {Text} from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function App() {
+const Tab = createBottomTabNavigator();
+
+function HomeScreen() {
+  
+}
+
+function StudyScreen() {
+  
+}
+
+function NotificationScreen() {
+  
+}
+
+function MypageScreen() {
+  
+}
+
+function BottomTabNavigationApp() {
   return (
-    <View style={styles.container}>
-      <Text>리액트 네이티브 최초 테스트</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator initialRouteName="Home" 
+        screenOptions={{
+          tabBarActiveTintColor: '#3D4AE7',
+          
+        }}>
+        <Tab.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: '홈',
+            tabBarIcon: ({color, size}) => (
+              <Icon name="home" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Study"
+          component={StudyScreen}
+          options={{
+            title: '스터디',
+            tabBarIcon: ({color, size}) => (
+              <Icon name="menu-book" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Notification"
+          component={NotificationScreen}
+          options={{
+            title: '게시판',
+            tabBarIcon: ({color, size}) => (
+              <Icon name="dashboard" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Message"
+          component={MypageScreen}
+          options={{
+            title: '마이페이지',
+            tabBarIcon: ({color, size}) => (
+              <Icon name="contact-page" color={color} size={size} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default BottomTabNavigationApp;
